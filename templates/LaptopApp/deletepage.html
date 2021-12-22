@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Delete</title>
+{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center border mt-3 mx-5 p-3 ">
+<div class="text-center"  >
+    <p style="font-size: 20px;">Do you want to delete entry for <strong>{{laptop.company}} {{laptop.model_name}}</strong> with {{ laptop.Processor }} processor {{ laptop.ram }}GB RAM and {{ laptop.rom }}GB?</p>
+    <form method="POST">
+        {% csrf_token %}
+    <a  href="{% url 'deletepage' laptop.id %}"><button style="width:50%;" class="btn btn-danger">Delete</button></a>
+    </form>
+    <a class="btn btn-success mt-2" style="width:50%;" href="{% url 'homepage' %}">Cancel</a>
+</div>
+    </div>
+{% endblock %}
